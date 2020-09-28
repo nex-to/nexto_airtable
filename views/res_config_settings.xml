@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="nexto_res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">Nexto Airtable</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="90"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="NextoAirtable" string="NextTo Airtable" data-key="nexto_airtable">
+                    <h2>NexTo Airtable API Configuration</h2>
+                    <div class="row mt16 o_settings_container" id="website_settings">
+                        <div class="col-12 col-lg-6 o_setting_box" id="base_url_settings">
+                            <div class="o_setting_right_pane">
+                                <label string="Base URL" for="default_base_url"/>
+                                <div class="text-muted">
+                                    The base URL for Airtable
+                                </div>
+                                <div class="mt8">
+                                    <field name="default_base_url"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" id="api_version_settings">
+                            <div class="o_setting_right_pane">
+                                <label string="API Version" for="default_api_version"/>
+                                <div class="text-muted">
+                                    The API version to use
+                                </div>
+                                <div class="mt8">
+                                    <field name="default_api_version"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" id="airtable_base_settings">
+                            <div class="o_setting_right_pane">
+                                <label string="Airtable Base ID" for="default_airtable_base"/>
+                                <div class="text-muted">
+                                    The ID of the Airtable base.  You can find this value by going to <a href="https://airtable.com/api">https://airtable.com/api</a>
+                                    and selecting the Airtable base; the Airtable base ID is shown in the INTRODUCTION section.
+                                    <br/><br/>
+                                    It can also be found in the URL https://airtable.com/<em><strong>airtable_base_id</strong></em>/api/docs#curl/introduction.
+                                </div>
+                                <div class="mt8">
+                                    <field name="default_airtable_base"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" id="airtable_api_token_settings">
+                            <div class="o_setting_right_pane">
+                                <label string="Airtable API Token" for="default_api_token"/>
+                                <div class="text-muted">
+                                    The Airtable API key.  It can be found by going to <a href="https://airtable.com/account">https://airtable.com/account</a> under
+                                    the &#60;&#62; API section.
+                                </div>
+                                <div class="mt8">
+                                    <field name="default_api_token"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" id="airtable_cron_user_settings">
+                            <div class="o_setting_right_pane">
+                                <label string="Airtable cron User ID" for="default_cron_user_id"/>
+                                <div class="text-muted">
+                                    The unique ID of the cron user as defined in Airtable.  The ID of a record can be found in the URL after expanding the
+                                    record.
+                                    <br/>
+                                    <br/>
+                                    The unique record ID portion of the URL is the portion that appears in bold italics in the URL
+                                    https://airtable.com/tblxxxxxxxxx/viwxxxxxxxx/<em><strong>recxxxxxxxx</strong></em>.
+                                </div>
+                                <div class="mt8">
+                                    <field name="default_cron_user_id"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="nexto_airtable_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="nexto_res_config_settings_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'nexto_airtable'}</field>
+    </record>
+</odoo>

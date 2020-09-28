@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <menuitem name="NexTo Airtable" id="nexto_airtable.menu_root" web_icon="nexto_airtable,static/description/icon.png"/>
+</odoo>
