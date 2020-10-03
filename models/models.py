@@ -44,7 +44,7 @@ class NexToAirtable(models.Model):
 
     def _get_headers(self):
         headers = {
-            'Authorization': 'Bearer ' + self.env['ir.config_parameter'].get_param('nexto.airtable.api_token')
+            'Authorization': 'Bearer ' + self.env['generic.crypto.param'].get_param('nexto.airtable.api_token')
         }
         return headers
 
@@ -64,7 +64,7 @@ class NexToAirtable(models.Model):
             _logging.warning('Airtable Base ID is not set.')
             bln_min_config = False
 
-        if self.env['ir.config_parameter'].get_param('nexto.airtable.api_token') is None:
+        if self.env['generic.crypto.param'].get_param('nexto.airtable.api_token') is None:
             _logging.warning('Airtable API Token is not set.')
             bln_min_config = False
 
@@ -282,7 +282,7 @@ class ResConfigSettings(models.TransientModel):
         res.update(
             default_base_url=self.env['ir.config_parameter'].sudo().get_param('nexto.airtable.base_url'),
             default_api_version=self.env['ir.config_parameter'].sudo().get_param('nexto.airtable.api_version'),
-            default_api_token=self.env['ir.config_parameter'].sudo().get_param('nexto.airtable.api_token'),
+            default_api_token=self.env['generic.crypto.param'].sudo().get_param('nexto.airtable.api_token'),
             default_airtable_base=self.env['ir.config_parameter'].sudo().get_param('nexto.airtable.airtable_base'),
             default_cron_user_id=self.env['ir.config_parameter'].sudo().get_param('nexto.airtable.cron_user_id'),
         )
@@ -294,5 +294,5 @@ class ResConfigSettings(models.TransientModel):
         self.env['ir.config_parameter'].sudo().set_param('nexto.airtable.base_url', self.default_base_url)
         self.env['ir.config_parameter'].sudo().set_param('nexto.airtable.api_version', self.default_api_version)
         self.env['ir.config_parameter'].sudo().set_param('nexto.airtable.airtable_base', self.default_airtable_base)
-        self.env['ir.config_parameter'].sudo().set_param('nexto.airtable.api_token', self.default_api_token)
+        self.env['generic.crypto.param'].sudo().set_param('nexto.airtable.api_token', self.default_api_token)
         self.env['ir.config_parameter'].sudo().set_param('nexto.airtable.cron_user_id', self.default_cron_user_id)

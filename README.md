@@ -7,8 +7,11 @@
 
 4.  Set the cron_status_cal column in the *Requests* table to -1 for the records that the cron job should
     should ignore the first time it runs.
-    
 
+5. Install following Odoo addon/module:
+    - [Generic Crypto Utils](https://apps.odoo.com/apps/modules/13.0/generic_crypto_utils/) by Center of Research and Development
+    
+        Follow directions for generating and storing an encryption key.
 
 ### To install and configure this odoo module:
 
