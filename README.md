@@ -12,7 +12,24 @@
     - [Generic Crypto Utils](https://apps.odoo.com/apps/modules/13.0/generic_crypto_utils/) by Center of Research and Development
     
         Follow directions for generating and storing an encryption key.
-
+        
+        NOTE: The result of Fernet.generate_key() is a byte-string:
+        ```
+        $ python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key())"
+        b'PEVjlONU8FRoY_eL05GUn-naWadZC3aICGpGUi0_zCs='
+        ```
+        
+        The value to paste in the odoo.conf file should the enclosed portion of the byte-string:
+        ```
+        ; odoo.conf
+      
+        ; don't do this
+        crypto_token = b'PEVjlONU8FRoY_eL05GUn-naWadZC3aICGpGUi0_zCs='
+      
+        ; do this
+        crypto_token = PEVjlONU8FRoY_eL05GUn-naWadZC3aICGpGUi0_zCs=
+        ```
+        
 ### To install and configure this odoo module:
 
 1.  Create a directory in the *addons* folder of your odoo installation.
